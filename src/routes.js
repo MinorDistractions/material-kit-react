@@ -10,6 +10,9 @@ import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import StocksPage from './pages/StocksPage';
 import DashboardAppPage from './pages/DashboardAppPage';
+import StockSummaryPage from './pages/StockSummaryPage';
+
+import tickerList from './_mock/tickerList.json';
 
 // ----------------------------------------------------------------------
 
@@ -25,6 +28,10 @@ export default function Router() {
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
         { path: 'stocks', element: <StocksPage /> },
+        ...tickerList.map((ticker) => ({
+          path: `${ticker}`,
+          element: <StockSummaryPage ticker = {ticker} />,
+        })),
       ],
     },
     {

@@ -5,7 +5,7 @@ import { Container, Stack, Typography } from '@mui/material';
 // components
 import { ProductSort, StockList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
 // mock
-import PRODUCTS from '../_mock/products';
+import companiesPrices from '../_mock/companiesPrices.json';
 
 // ----------------------------------------------------------------------
 
@@ -20,6 +20,8 @@ export default function StocksPage() {
     setOpenFilter(false);
   };
 
+  console.log(companiesPrices);
+
   return (
     <>
       <Helmet>
@@ -31,7 +33,7 @@ export default function StocksPage() {
           Stocks
         </Typography>
 
-        <StockList products={PRODUCTS} />
+        <StockList products={companiesPrices} />
 
       </Container>
     </>

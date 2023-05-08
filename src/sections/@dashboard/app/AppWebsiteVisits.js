@@ -20,6 +20,9 @@ export default function AppWebsiteVisits({ title, subheader, chartLabels, chartD
     fill: { type: chartData.map((i) => i.fill) },
     labels: chartLabels,
     xaxis: { type: 'datetime' },
+    stroke: {
+      curve: 'straight',
+    },    
     tooltip: {
       shared: true,
       intersect: false,

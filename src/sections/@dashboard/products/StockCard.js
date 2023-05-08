@@ -25,39 +25,38 @@ StockCard.propTypes = {
 };
 
 export default function StockCard({ product }) {
-  const { name, cover, price, colors, status, priceSale } = product;
+  const { ceo, country, description, industry, name, prices, ticker } = product;
 
   return (
-    <Card>
-      <Box sx={{position: 'relative', height: '150px' }}>
-        <StyledProductImg alt={name} src={cover} />
-      </Box>
+    <Link href={`/dashboard/${ticker}`} color="inherit" underline="none">
+      <Card>
+        <Box sx={{position: 'relative', height: '150px' }}>
+          <StyledProductImg alt={name} src='/assets/images/products/product_1.jpg' />
+        </Box>
 
-      <Stack spacing={2} sx={{ p: 3 }}>
-        <Link color="inherit" underline="hover">
-          <Typography variant="subtitle2" noWrap>
-            {name}
-          </Typography>
-        </Link>
-
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <ColorPreview colors={colors} />
-          <Typography variant="subtitle1">
-            <Typography
-              component="span"
-              variant="body1"
-              sx={{
-                color: 'text.disabled',
-                textDecoration: 'line-through',
-              }}
-            >
-              {priceSale && fCurrency(priceSale)}
+        <Stack spacing={2} sx={{ p: 3 }}>
+            <Typography variant="subtitle2" noWrap>
+              {`${ticker}: ${name}`}
             </Typography>
-            &nbsp;
-            {fCurrency(price)}
-          </Typography>
+
+          <Stack direction="row" alignItems="center" justifyContent="space-between">
+            <Typography variant="subtitle1">
+              <Typography
+                component="span"
+                variant="body1"
+                sx={{
+                  color: 'text.disabled',
+                  textDecoration: 'line-through',
+                }}
+              >
+                {prices[0] && fCurrency(prices[0])}
+              </Typography>
+              &nbsp;
+              {fCurrency(prices[900])}
+            </Typography>
+          </Stack>
         </Stack>
-      </Stack>
-    </Card>
+      </Card>
+    </Link>
   );
 }

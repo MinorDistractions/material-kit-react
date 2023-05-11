@@ -16,6 +16,7 @@ import {
   AppWidgetSummary,
   AppCurrentSubject,
   AppConversionRates,
+  CompanyCard
 } from '../sections/@dashboard/app';
 
 import companiesPrices from '../_mock/companiesPrices.json';
@@ -34,31 +35,6 @@ export default function StockSummaryPage({ ticker }) {
       </Helmet>
 
       <Container maxWidth="xl">
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          CEO: {ceo}
-        </Typography>
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          Country: {country}
-        </Typography>
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          Description: {description}
-        </Typography>
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          Industry: {industry}
-        </Typography>
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          Name: {name}
-        </Typography>
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          Sector: {sector}
-        </Typography>                                        
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          Start: {prices[0]}
-        </Typography> 
-        <Typography variant="h4" sx={{ mb: 5 }}>
-          End: {prices[900]}
-        </Typography> 
-
 
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={8}>
@@ -87,6 +63,10 @@ export default function StockSummaryPage({ ticker }) {
                 },
               ]}
             />
+          </Grid>
+          
+          <Grid item xs={12} md={6} lg={4}>
+            <CompanyCard companyData={companiesPrices[index]}/>
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
